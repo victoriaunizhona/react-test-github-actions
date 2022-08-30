@@ -1,0 +1,18 @@
+name: Info Workflow
+
+on: [push]
+
+jobs:
+  run-info-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Project Info
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+       - name: Versions
+        run: |
+          node -v 
+          npm -v
