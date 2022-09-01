@@ -28,14 +28,13 @@ jobs:
             echo $GITHUB_SHA
             echo $GITHUB_REPOSITORY
             echo $GITHUB_WORKSPACE
-          
+
       - name: Files to be published
         run: |
           cd build
           ls -la
 
   build-and-deploy:
-    needs: [lint-test-checks]
     runs-on: ubuntu-latest
 
     steps:
