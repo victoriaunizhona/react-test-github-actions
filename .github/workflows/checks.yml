@@ -13,6 +13,12 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
+      - name: Project Info
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          ls -la
       - name: Install dependancies
         run: npm install
       - name: Lint
