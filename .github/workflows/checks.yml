@@ -24,10 +24,14 @@ jobs:
       - name: Test
         run: npm run test --collectCoverage --coverageDirectory=output/
 
+      - name: Info
+        run: |
+           ls -la
+           pwd
+           
       - name: Upload an artifact
-        run: ls -la
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-coverage
-          path: ./output/lcov.info
+          path: /home/runner/work/react-test-github-actions/react-test-github-actions/output/lcov.info
 
