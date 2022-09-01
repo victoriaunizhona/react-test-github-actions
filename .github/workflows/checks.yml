@@ -2,7 +2,7 @@ name: Checks
 'on':
   - push
 jobs:
-  setup:
+  lint-test-checks:
     runs-on: ubuntu-latest
 
     steps:
