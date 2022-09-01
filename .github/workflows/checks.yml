@@ -30,3 +30,8 @@ jobs:
           name: test-coverage
           path: /home/runner/work/react-test-github-actions/react-test-github-actions/output/lcov.info
 
+      - name: Upload to CodeCov
+        uses: codecov/codecov-action@v3
+        with:
+          verbose: true
+
