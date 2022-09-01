@@ -24,11 +24,6 @@ jobs:
       - name: Test
         run: npm run test --collectCoverage --coverageDirectory=output/
 
-      - name: Info
-        run: |
-           ls -la
-           pwd
-           
       - name: Upload an artifact
         uses: actions/upload-artifact@v3
         with:
