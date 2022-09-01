@@ -16,7 +16,7 @@ jobs:
           cache: npm
 
       - name: Install dependancies
-        run: npm install
+        run: npm ci
 
       - name: Lint
         run: npm run lint
