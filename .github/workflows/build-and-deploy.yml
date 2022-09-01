@@ -5,6 +5,35 @@ on:
       - master
 
 jobs:
+
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+
+      - name: Install and Build 🔧
+        run: |
+          npm ci
+          npm run build
+
+      - name: General Info
+        run: |
+            echo $GITHUB_SHA
+            echo $GITHUB_REPOSITORY
+            echo $GITHUB_WORKSPACE
+          
+      - name: Files to be published
+        run: |
+          cd build
+          ls -la
+
   build-and-deploy:
     needs: [lint-test-checks]
     runs-on: ubuntu-latest
