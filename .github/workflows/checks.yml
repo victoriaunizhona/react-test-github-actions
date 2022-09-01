@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 16
           cache: npm
-          cache-dependency-path: ./package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Project Info
         run: |
           echo $GITHUB_SHA
@@ -22,6 +22,7 @@ jobs:
       - name: Install dependancies
         run: npm install
       - name: Lint
-        run: react-scripts test
+        run: npm lint
       - name: Test
-        run: eslint src/**/*.js src/**/*.jsx
+        run: npm test `--watchAll
+
