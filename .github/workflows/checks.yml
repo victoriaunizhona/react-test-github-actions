@@ -1,28 +1,32 @@
-name: Linting and testing
+name: Checks
 'on':
   - push
 jobs:
   setup:
     runs-on: ubuntu-latest
+
     steps:
       - name: Copy library
         uses: actions/checkout@v3
+
       - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Project Info
-        run: |
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
-          ls -la
+
       - name: Install dependancies
         run: npm install
+
       - name: Lint
         run: npm run lint
+
       - name: Test
-        run: npm run test
+        run: npm run test --collectCoverage --coverageDirectory=output/
+
+      - name: Upload an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-coverage
+          path: output/lcov.info
 
