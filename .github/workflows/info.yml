@@ -4,6 +4,7 @@ name: Info Workflow
 jobs:
   run-info-command:
     runs-on: ubuntu-latest
+    needs: setup
     steps:
       - name: Project Info
         run: |
@@ -11,6 +12,7 @@ jobs:
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
           echo "${{ github.token }}"
+          ls -la
       - name: Versions
         run: |
           node -v 
